@@ -1,5 +1,16 @@
-# from inventory_report.inventory.product import Product
+from inventory_report.inventory.product import Product
 
 
 def test_cria_produto():
-    pass  # Seu teste deve ser escrito aqui
+
+    product = Product(
+        1,
+        "cereal",
+        "nescal",
+        "23/06/2022",
+        "23/06/2023",
+        "123456",
+        "local seco",
+    )
+
+    assert product.id == 1
