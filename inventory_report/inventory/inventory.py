@@ -1,7 +1,7 @@
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 import csv
-import xmltodict as ET
+import xmltodict as ET  # https://pypi.org/project/xmltodict/
 import json
 
 
