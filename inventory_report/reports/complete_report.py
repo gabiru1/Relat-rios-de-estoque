@@ -16,8 +16,8 @@ class CompleteReport:
 
         oldest_manufactured = min(manufacture_dates)
         closer_to_spoiling = min(expiration_dates)
-        companies = Counter(company_names)
-        biggest_company = companies.most_common(1)[0][0]
+        all_companies = Counter(company_names)
+        biggest_company = all_companies.most_common(1)[0][0]
 
         companies = ""
 
