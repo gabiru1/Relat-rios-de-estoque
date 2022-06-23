@@ -1,34 +1,21 @@
+from .simple_report import SimpleReport
 from collections import Counter
 
 
-class CompleteReport:
+class CompleteReport(SimpleReport):
+    @staticmethod
+    def generate(products):
+        company_tuple_products = Counter(
+            product["nome_da_empresa"] for product in products
+        ).most_common()
 
-    def gen(products):
-        company_names = list()
-        manufacture_dates = list()
-        expiration_dates = list()
-
-        for product in products:
-
-            company_names.append(product["nome_da_empresa"])
-            manufacture_dates.append(product["data_de_fabricacao"])
-            expiration_dates.append(product["data_de_validade"])
-
-        oldest_manufactured = min(manufacture_dates)
-        closer_to_spoiling = min(expiration_dates)
-        all_companies = Counter(company_names)
-        biggest_company = all_companies.most_common(1)[0][0]
-
-        companies = ""
-
-        for company in companies.items():
-
-            companies += f"- {company[0]}: {company[1]}\n"
+        company_products_string = "".join(
+            f"- {company}: {amount}\n"
+            for company, amount in company_tuple_products
+        )
 
         return (
-            f"Data de fabricação mais antiga: {oldest_manufactured}\n"
-            f"Data de validade mais próxima: {closer_to_spoiling}\n"
-            f"Empresa com mais produtos: {biggest_company}\n"
-            f"Produtos estocados por empresa:\n"
-            f"{companies}"
+            SimpleReport.generate(products)
+            + "\nProdutos estocados por empresa:\n"
+            + company_products_string
         )
