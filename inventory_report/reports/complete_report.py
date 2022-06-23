@@ -3,8 +3,10 @@ from collections import Counter
 
 
 class CompleteReport(SimpleReport):
+
     @staticmethod
     def generate(products):
+
         company_tuple_products = Counter(
             product["nome_da_empresa"] for product in products
         ).most_common()
